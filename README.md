@@ -1,0 +1,4 @@
+code-katas
+==========
+
+Code katas!
