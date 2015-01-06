@@ -1,9 +1,15 @@
 import os
 import sys
 
-directory = sys.argv[1]
+directory = sys.argv[1] if len(sys.argv) > 1 else ''
 
-def main():
+
+def get_files_using_future(directory):
+    """
+    Returns list of file paths of python files under `directory` that uses __future__
+
+    Returns an empty list if directory does not exist or no python files were using __future__
+    """
     files_with_future = []
 
     if os.path.exists(directory):
@@ -25,10 +31,18 @@ def main():
                         file_data.close()
                         break
 
+    return files_with_future if files_with_future else []
+
+
+def main():
+    files_with_future = get_files_using_future(directory)
+
+    if files_with_future:
+        print "Files using __future__"
         for file_path in files_with_future:
             print file_path
     else:
-        print 'Directory not found!'
+        print "Directory not found or no files using __future__!"
 
 
 if __name__ == '__main__':
