@@ -1,9 +1,7 @@
 import os
 import sys
-import __future__
 
 directory = sys.argv[1]
-FUTURE_STUFF = dir(__future__)
 
 def main():
     files_with_future = []
